@@ -1,0 +1,19 @@
+.App{
+    margin: auto;
+    border: 1px solid red;
+    padding: 5px;
+    width:300px;
+    background-color: brown;
+}
+body{
+    background-color:darkslateblue;
+}
+#todos{
+    background-color: aqua;
+    padding: 5px;
+}
+button{
+    font-size: large;
+    margin: 5px;
+    background-color: blueviolet;
+}
