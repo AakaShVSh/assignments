@@ -1,0 +1,21 @@
+#imghome{
+    width:600px;
+}
+
+#contenthome{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-family: ShopifySans, Helvetica, Arial, Lucida Grande, sans-serif;
+    line-height: 30px;
+    text-justify:distribute;
+    width:800px;
+}
+#titlehome{
+    text-decoration: underline;
+}
+#homebox{
+   margin:20px;
+}
