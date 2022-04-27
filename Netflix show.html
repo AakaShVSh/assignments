@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body{
+            background-image: url("	https://assets.nflxext.com/ffe/siteui/vlv3/eb482c64-e879-4e88-9ddc-d839cb7d1232/d03a05fb-39a4-4594-b16c-ddc39f35f5bd/IN-en-20220131-popsignuptwoweeks-perspective_alpha_website_large.jpg");
+            background-size: cover;
+        }
+
+        #container {
+           
+            width: 30%;
+          
+        }
+        #main{
+            margin: 200px;
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap:40px;
+            border-radius: 20px;
+           
+       
+            margin-top: 100px;
+            width: 1100px;
+            background: linear-gradient(115deg, #596061 10%, #080707 90%);
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+        #Images{
+            width: 100%;
+            height: 390px;
+            border-radius: 20px;
+        }
+        #img2{
+           width: 500px;
+           height: 400px;
+           border-radius: 20px;
+        }
+
+        #divi{
+            text-align: center;
+            border-radius: 20px;
+            width: 450px;
+            box-shadow: rgb(247, 0, 0) 50px 30px;
+            background-color: rgb(0, 0, 0);
+            color: rgb(253, 0, 0);
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-bottom: 1em;;
+            margin-bottom: 4em;;
+            margin-top:2em;
+        }
+        button{
+            margin-top: 4em;
+            font-size: xx-large;
+            border:1px #00e1ff;
+            border-radius: 20px;
+            background-color: rgb(255, 0, 0);
+            border:0px;
+            color:black;
+            font-family:fantasy;
+        }
+        button:hover{
+            background-color: rgb(116, 114, 114);
+            cursor: pointer;
+        }
+        #input{
+            
+            display: block;
+            box-shadow: rgb(255, 0, 0)  2px 1px, rgb(255, 0, 0)  9px 9px;
+            /* border: 2px solid green; */
+            background-color: white;
+            height: 299px;
+            width: 400px;
+            margin: 50px;
+            text-align: center;
+            border-radius: 20px;
+            background-image: url("https://th.bing.com/th/id/OIP.BVRTCzsXNXh8Ezp9lEJ46QHaEK?w=289&h=180&c=7&r=0&o=5&pid=1.7");
+            background-size: contain;
+            
+        }
+       
+        input{
+            margin-top: 1em;
+            text-align: center;
+            font-size: x-large;
+            border-radius: 20px;
+            
+
+        }
+
+    </style>
+</head>
+
+<body>
+    
+    <div id="main">
+    
+        <div id="input">
+            <input id="search" type="text" placeholder="search your movie">
+            <br>
+            <button onclick="moviesearch()">Search</button>
+        </div>
+        <div id="container">
+    
+        </div>
+    </div>
+   
+</body>
+
+</html>
+<script>
+ function moviesearch() {
+        var search = document.querySelector("#search").value;
+        console.log(search)
+
+        var data_arr = []
+        var url = `http://www.omdbapi.com/?apikey=545335f6&t=${search}`;
+
+        async function fetches() {
+            try {
+                let result = await fetch(url)
+
+                var data = await result.json();
+                console.log(data)
+                data_arr.push(data)
+                console.log(data_arr)
+
+                append(data_arr)
+            }
+            catch(err){
+                var div = document.createElement("div")
+                var img2 = document.createElement("img")
+                img2.setAttribute("id","img2")
+                img2.src = "https://thumbs.dreamstime.com/b/error-page-not-found-concept-don-t-panic-i-m-mechanic-hand-wrench-adjustable-spanner-robot-handyman-dark-blue-paper-92261195.jpg"
+                div.append(img2)
+                document.querySelector("#container").append(div)
+            }
+   
+
+   }
+
+        fetches()
+    }
+
+    function append(data_arr) {
+        document.querySelector("#container").innerHTML = ""
+        data_arr.forEach(function (ele) {
+            var div = document.createElement("div")
+            div.setAttribute("id","divi")
+            
+            var img = document.createElement("img")
+            img.setAttribute("id","Images")
+            img.src = ele.Poster
+
+            var movie_title = document.createElement("h2")
+            movie_title.textContent = ele.Title
+            var Actors = document.createElement("p")
+            Actors.textContent = ele.Actors
+
+            var year = document.createElement("p")
+            year.textContent = ele.Year
+
+            var ratings = document.createElement("p")
+            ratings.textContent = ele.Ratings[0].Value
+
+            div.append(img, movie_title, Actors, year, ratings)
+            document.querySelector("#container").append(div)
+        })
+
+
+    }
+</script>
