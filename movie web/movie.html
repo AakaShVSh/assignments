@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <title>Movies</title>
+    <script src="https://kit.fontawesome.com/fa650845c0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="app.css" />
+    <style>
+        body{
+            background-color: rgb(71, 71, 104);
+        }
+        #container {
+           margin:auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+            width:1290px;
+            background-color: aqua;
+            border-radius: 20px;
+            margin-top:100px;
+        }
+        img{
+            border-radius: 20px;
+            width: 100%;
+        }
+        #box{
+            /* border: 1px solid rgba(240, 46, 170, 0.4); */
+            width: 355px;
+             margin: 20px;
+             border-radius: 20px;
+             background-color: white;
+             
+             box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;        }
+        #box:hover {
+            width: 400px;
+            background: linear-gradient(115deg, orange 10%, #0bcdf0 90%);
+            font-size: 40px;
+            transition: all 0.1s;
+        }
+        p{
+            padding-left: 20px;
+            font-size: 20px;
+            font-family: monospace;
+           
+        }
+
+        #filter{
+            border-radius: 20px;
+            font-size:20px;
+            margin-top: 20px;
+        }
+        #dibba,button{
+           border-radius: 10px;
+            font-size:20px;
+        }
+        #all{
+            margin: auto;
+            /* border:2px solid red; */
+            width:400px;
+            text-align: center;
+            font-family: monospace;
+            font-size: large;
+        }
+        #title{
+            background-color: rgb(6, 230, 81);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="all">
+        <input id="dibba" type="text" ><button onclick="movie()">Search</button>
+        <select name="" id="filter" onchange="search()" >
+            <option value="all">Select your movie</option>
+            <option value="Spider man no way home">Spider Man</option>
+            <option value="Superman">Superman</option>
+            <option value="Batman">Batman</option>
+            <option value="Avengers">Avengers</option>
+            <option value="Wonder Woman">Wonder Woman</option>
+            <option value="Joker">Joker</option>
+        </select>
+        <h1 id="title">Trending Movies</h1>
+    </div>
+   
+    <div id="container">
+    
+    </div>
+</body>
+
+</html>
+
+<script>
+    var data = [
+        //spider//   
+        {
+            img: "https://tse1.explicit.bing.net/th?id=OIP.oibpsq033CbgaPAWRX97bAHaD5&pid=Api&P=0&w=355&h=187",
+            name:"Spider man no way home",
+            yor: 2021,
+            imbd: "8.7/10",
+            cast: ["Tom", "Zendaya"],
+        },
+
+        //spider//   
+        {
+            img: "https://tse4.mm.bing.net/th?id=OIP.V5WXHtv5XCfIHeAcj2VM4wHaEK&pid=Api&P=0&w=324&h=182",
+            name:"Superman",
+            yor: 2013,
+            imbd: "7/10",
+            cast: ["Henry", "Amy Adams"],
+        },
+
+        //spider//   
+        {
+            img: "https://tse1.mm.bing.net/th?id=OIP.4fcHMO4IMp5IuFB4aRWmwAHaEK&pid=Api&P=0&w=318&h=178",
+            name:"Batman",
+            yor: 2019,
+            imbd: "7.7/10",
+            cast: ["Ben Affleck"],
+        },
+
+        //spider//   
+        {
+            img: "https://tse1.mm.bing.net/th?id=OIP.4XdHZ637Ew_jInPtpUzmRQHaD4&pid=Api&P=0&w=329&h=172",
+            name:"Avengers",
+            yor: 2012,
+            imbd: "8.9/10",
+            cast: ["Robert", "Chris Evans"],
+        },
+
+        //spider//   
+        {
+            img: "https://tse3.mm.bing.net/th?id=OIP.oASYe65K7SYuHN-6HFY9jgHaEK&pid=Api&P=0&w=333&h=187",
+            name:"Wonder Woman",
+            yor: 2017,
+            imbd: "8.7/10",
+            cast: ["Gal Gadot"],
+        },
+        //spider//    
+        {
+            img: "https://tse3.mm.bing.net/th?id=OIP.6wcwgWs0Or72pzFnyLJaHQHaEK&pid=Api&P=0&w=318&h=178",
+            name:"Joker",
+            yor: 2019,
+            imbd:  "9/10",
+            cast: ["Robert De Niro"],
+        },
+
+    ];
+    // displaydata()
+    displaydata(data)
+
+    function displaydata(data) {
+        document.querySelector("#container").innerHTML=""
+        data.map(function (ele) {
+           
+            var div = document.createElement("div")
+            div.setAttribute("id","box")
+            var img = document.createElement("img")
+            img.setAttribute("src", ele.img)
+            
+            var p = document.createElement("p")
+            p.innerHTML = "<b>Name"+":</b>"+ele.name
+
+            var p1 = document.createElement("p")
+            p1.innerHTML = "<b>Year of released"+":</b>"+ele.yor
+
+            var p2 = document.createElement("p")
+            p2.innerHTML = "<b>IMBD"+":</b>"+ele.imbd
+
+            var p3 = document.createElement("p")
+            p3.innerHTML = "<b>Cast"+":</b>"+ele.cast
+
+            div.append(img, p,p1, p2, p3)
+
+            document.querySelector("#container").append(div)
+        
+
+        })
+    }
+
+    function search(){
+
+        var slec = document.querySelector("#filter").value
+        console.log(slec)
+        var fil = data.filter(function(ele){
+            return slec==ele.name
+        })
+        
+        console.log(fil)
+        displaydata(fil)
+    }
+
+    function movie(){
+      var x = document.querySelector("#dibba").value
+    //   console.log(x)
+      var filli = data.filter(function(ele){
+            return x==ele.name
+            
+        })
+       
+      displaydata(filli)
+    }
+
+</script>
