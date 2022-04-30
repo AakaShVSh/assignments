@@ -1,0 +1,11 @@
+.App {
+  text-align: center;
+}
+
+.todo-ele{
+  justify-content: space-around;
+}
+#mark{
+  text-decoration: line-through;
+  color:greenyellow;
+}
