@@ -3,10 +3,10 @@
 }
 
 #container{
-  display: grid;
-  grid-template-areas: "a b c";
-  background-color: rgb(31, 30, 30);
-  gap:20%;
+   display: grid;
+   grid-template-areas: "a b c";
+   background-color: rgb(31, 30, 30);
+   gap:20%;
 }
 #menu{
   display: grid;
