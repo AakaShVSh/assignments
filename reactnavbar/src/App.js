@@ -2,8 +2,8 @@
 import './App.css';
 
 function App() {
-  const menu = ["Services","Projects","About"];
-  return (
+   const menu = ["Services","Projects","About"];
+   return (
     <div className="App">
     <div id = "container">
       <h1>LOGOBAKERY</h1>
