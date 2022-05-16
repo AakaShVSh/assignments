@@ -22,9 +22,9 @@ function App() {
   );
 }
 const Option1 = (op) => {
-  return <li>{op.option}</li>
+  return <li> {op.option} </li>
 }
 const Option2 = (op) => {
-  return <li>{op.option}</li>
+  return <li> {op.option} </li>
 }
 export default App;
