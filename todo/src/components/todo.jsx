@@ -8,7 +8,7 @@ const Todo = () => {
     setinput([...todoinput, gettodo]);
   };
 
-  return (
+  return ( 
     <div>
       <h1>Write your Todo</h1>
       {todoinput.map((e) => (
