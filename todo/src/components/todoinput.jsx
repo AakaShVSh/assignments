@@ -9,7 +9,7 @@ const TodoInput = ({ getdata }) => {
         onChange={(e) => {
           settodo(e.target.value);
         }}
-        type="text"
+        type="text" 
         style={{ fontSize: "20px" }}
       />
       <button
