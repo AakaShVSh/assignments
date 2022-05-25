@@ -1,22 +1,29 @@
 import { useEffect, useState } from "react"
 
 export const Timer = () => {
-       const [secound,setsecound] = useState(0);
+       const [count, setCount] = useState(0)
+    useEffect(()=>{
+      var id = setInterval(() => {
+        setCount((prev)=>{
 
-       useEffect(() => {  
-           
-           setInterval(() => {
-           setsecound((preValue) => {
-            
-               return preValue+1;
-           })
-           },1000)
-       },[])
+          if(prev>=5){
 
-       return (
-           <div>
-               <h1>secound: {secound}</h1>
-           </div>
-       )
-
+            clearInterval(id)
+            return "You Reached to max time"
+          }
+          
+          return prev+1
+        })
+      },1000 );
+    
+      return ()=>{
+        clearInterval(id)
+      }
+    },[])
+      return (
+        <div className="App">
+          <h1>timer will go from 0 to 60</h1>   
+         <div>{count}</div>
+        </div>
+      )
 }
